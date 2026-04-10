@@ -1,0 +1,72 @@
+# Compiled binaries
+/target/
+**/*.rs.bk
+
+# Debugging
+*.log
+meshtastic_bridge.log
+lora_test.log
+
+# Configuration files (except examples)
+config.json
+!config.example.json
+gui_config.json
+
+# Environment and IDE files
+.env
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# Development tool directories
+.claw/
+.sandbox-home/
+.sandbox-tmp/
+.clawd-todos.json
+
+# Reticulum data
+~/.reticulum/
+.reticulum/
+
+# Python virtual environment
+venv/
+__pycache__/
+*.pyc
+
+# Downloads directory (temporary)
+downloads/
+
+# Build artifacts
+*.o
+*.so
+*.dylib
+
+# Coverage reports
+coverage/
+*.gcda
+*.gcno
+
+# Backup files
+*.bak
+*.backup
+
+# Temporary files
+*.tmp
+temp/
+
+# Test output
+test-output/
+
+# Cargo lock file (should be committed for applications)
+# Cargo.lock
+
+# Local overrides
+.local-*
+
+# Reticulum-rs build directory
+Reticulum-rs/target/

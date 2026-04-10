@@ -1,0 +1,72 @@
+{
+  "mqtt": {
+    "host": "mqtt.meshtastic.org",
+    "port": 1883,
+    "username": "meshdev",
+    "password": "large4cats",
+    "use_tls": false,
+    "topic_prefix": "msh",
+    "client_id": "meshtastic_reticulum_bridge",
+    "keepalive": 60,
+    "clean_session": true
+  },
+  "reticulum": {
+    "interfaces": [
+      {
+        "type": "tcp_client",
+        "host": "RNS.MichMesh.net",
+        "port": 7822,
+        "enabled": true
+      },
+      {
+        "type": "udp",
+        "listen_host": "0.0.0.0",
+        "listen_port": 4242,
+        "connect_host": "localhost",
+        "connect_port": 4242,
+        "enabled": false
+      },
+      {
+        "type": "serial",
+        "port": "/dev/ttyUSB0",
+        "baud_rate": 115200,
+        "enabled": false
+      },
+      {
+        "type": "kiss",
+        "port": "/dev/ttyUSB0",
+        "baud_rate": 9600,
+        "enabled": false
+      },
+      {
+        "type": "mqtt",
+        "host": "localhost",
+        "port": 1883,
+        "topic": "reticulum",
+        "enabled": false
+      }
+    ],
+    "storage_path": "~/.reticulum",
+    "identity_file": "~/.reticulum/identity",
+    "enable_propagation": true,
+    "enable_transport": true
+  },
+  "bridge": {
+    "log_level": "info",
+    "log_file": "meshtastic_bridge.log",
+    "message_timeout_seconds": 30,
+    "max_message_size": 1024,
+    "enable_message_cache": true,
+    "cache_size": 1000,
+    "deduplicate_messages": true,
+    "deduplication_window_seconds": 300
+  },
+  "routing": {
+    "forward_meshtastic_to_reticulum": true,
+    "forward_reticulum_to_meshtastic": true,
+    "filter_messages": false,
+    "allowed_message_types": ["text", "position", "telemetry", "nodeinfo"],
+    "blocked_sources": [],
+    "allowed_destinations": []
+  }
+}

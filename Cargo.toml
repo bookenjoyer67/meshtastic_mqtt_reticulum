@@ -1,0 +1,83 @@
+[package]
+name = "meshtastic_reticulum_bridge"
+version = "0.1.0"
+edition = "2021"
+
+[[bin]]
+name = "gui"
+path = "src/main_gui.rs"
+
+[[bin]]
+name = "gateway"
+path = "src/main_gateway.rs"
+
+[[bin]]
+name = "relay"
+path = "src/bin/relay.rs"
+
+[[bin]]
+name = "lora_bridge"
+path = "src/main_lora_bridge.rs"
+
+[lib]
+path = "src/lib.rs"
+
+[dependencies]
+# Shared
+tokio = { version = "1", features = ["full"] }
+serde_json = "1"
+anyhow = "1"
+log = "0.4"
+env_logger = "0.11"
+rand_core = "0.6"
+hex = "0.4"
+serde = { version = "1", features = ["derive"] }
+toml = "0.8"
+shellexpand = "3.1"
+sha2 = "0.10"
+
+# Bridge
+reticulum = { path = "Reticulum-rs", features = ["serial", "mqtt", "kiss", "i2p"] }
+# lxmf-rs = "0.1"  # Temporarily disabled due to compilation errors
+
+# GUI
+eframe = "0.27"
+egui = "0.27"
+rumqttc = { version = "0.24", features = ["use-rustls"] }
+chrono = { version = "0.4", features = ["serde"] }
+rfd = "0.15"
+base64 = "0.22"
+prost = "0.13"
+qrcode = "0.14"
+image = "0.24"
+meshtastic_protobufs = "2.7"
+chacha20poly1305 = "0.10.1"
+aead = "0.5.2"
+rand = "0.8.5"
+rustls-native-certs = "0.7"
+tokio-rustls = "0.25"
+webpki-roots = "0.26"
+reqwest = { version = "0.12", features = ["json"] }
+
+# Audio support
+codec2 = { version = "0.3", optional = true }
+opus = { version = "0.3", optional = true }
+cpal = { version = "0.15", optional = true }  # Cross-platform audio I/O
+hound = { version = "3.5", optional = true }  # WAV encoding/decoding
+
+# LoRa support (optional - uncomment when needed)
+sx127x_lora = { version = "0.3", optional = true }  # For SPI LoRa modules
+serialport = { version = "4.9", optional = true }  # For serial LoRa modules
+rusb = { version = "0.9", optional = true }         # For USB LoRa dongles
+embedded-hal = { version = "1.0", optional = true } # For SPI LoRa
+rppal = { version = "0.18", optional = true }       # For Raspberry Pi GPIO
+linux-embedded-hal = { version = "0.3", optional = true } # For Linux embedded HAL
+
+[features]
+default = []
+serial = []
+mqtt = []
+kiss = []
+i2p = []
+lora = ["dep:sx127x_lora", "dep:serialport", "dep:rusb", "dep:embedded-hal", "dep:rppal", "dep:linux-embedded-hal"]
+audio = ["dep:codec2", "dep:opus", "dep:cpal", "dep:hound"]

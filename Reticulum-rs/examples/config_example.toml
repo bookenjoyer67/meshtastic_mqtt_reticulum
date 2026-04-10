@@ -1,0 +1,119 @@
+# Example Reticulum configuration file
+# This file demonstrates the configuration options for all interfaces
+
+[global]
+node_name = "example-node"
+enable_forwarding = true
+enable_announces = true
+max_packet_size = 500
+default_mtu = 280
+
+# Interface configurations
+[[interfaces]]
+type = "TcpClient"
+name = "tcp-client-1"
+host = "127.0.0.1"
+port = 4242
+enabled = true
+
+[[interfaces]]
+type = "TcpServer"
+name = "tcp-server-1"
+bind_address = "0.0.0.0"
+port = 4242
+enabled = true
+
+[[interfaces]]
+type = "Udp"
+name = "udp-1"
+bind_address = "0.0.0.0"
+port = 4243
+enabled = true
+
+[[interfaces]]
+type = "Serial"
+name = "serial-1"
+port = "/dev/ttyUSB0"
+baud_rate = 115200
+enabled = true
+
+[[interfaces]]
+type = "Mqtt"
+name = "mqtt-1"
+host = "localhost"
+port = 1883
+client_id = "reticulum-node-1"
+username = "user"
+password = "pass"
+topic_prefix = "reticulum"
+use_tls = false
+enabled = true
+
+[[interfaces]]
+type = "Kiss"
+name = "kiss-1"
+port = "/dev/ttyUSB1"
+baud_rate = 9600
+enabled = true
+
+[[interfaces]]
+type = "I2p"
+name = "i2p-1"
+sam_address = "127.0.0.1"
+sam_port = 7656
+destination = "example.i2p"
+session_name = "reticulum-i2p"
+session_type = "DATAGRAM"
+use_local_dest = true
+enabled = true
+
+# Destination configurations
+[[destinations]]
+name = "example-app"
+app_type = "example"
+enabled = true
+identity_file = "~/.reticulum/identities/example-app.identity"
+
+# Transport settings
+[transport]
+max_hops = 128
+path_request_timeout = 30
+link_establish_timeout = 60
+packet_cache_size = 1024
+announce_table_size = 512
+link_table_size = 256
+eager_rerouting = false
+restart_links = true
+
+# Security settings
+[security]
+enable_encryption = true
+min_key_strength = 256
+verify_signatures = true
+allowed_ciphers = ["AES-256-GCM", "ChaCha20-Poly1305"]
+cert_validation = "Basic"
+
+# Performance tuning
+[performance]
+thread_pool_size = 4
+max_concurrent_connections = 100
+connection_pool_size = 20
+enable_compression = true
+compression_level = 6
+
+[performance.buffer_sizes]
+packet_buffer = 4096
+network_buffer = 8192
+crypto_buffer = 1024
+file_buffer = 65536
+
+# Logging configuration
+[logging]
+level = "Info"
+enable_file_logging = false
+log_file = "reticulum.log"
+max_log_size_mb = 10
+max_log_files = 5
+enable_console = true
+format = "Text"
+structured_logging = true
