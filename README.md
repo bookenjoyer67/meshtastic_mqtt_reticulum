@@ -32,21 +32,16 @@ The bridge translates messages between Meshtastic's MQTT protocol and Reticulum'
 ## Architecture
 
 ```
-Meshtastic Devices (LoRa) 
-       ↓
-Meshtastic MQTT Broker
-       ↓
-Meshtastic MQTT Bridge ←→ Reticulum Network
-       ↓
-Reticulum Interfaces (TCP/UDP/Serial/KISS/etc.)
+Meshtastic Devices (LoRa) ←→ Meshtastic MQTT Bridge ←→ Reticulum Network
+  
 ```
 
 ## Installation
 
 ### Prerequisites
 - Rust toolchain (latest stable)
-- Mosquitto MQTT broker (or any MQTT 3.1.1 compatible broker)
-- Meshtastic device(s) configured to use MQTT
+- Mosquitto MQTT broker (or any MQTT 3.1.1 compatible broker) // Eventually (like tomorrow) it will be it's own mqtt broker
+- Meshtastic device(s) configured to use MQTT and/or LoRa dongle.
 
 ### Build from Source
 ```bash
