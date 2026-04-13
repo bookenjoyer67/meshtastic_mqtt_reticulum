@@ -3,7 +3,7 @@
 A bridge that connects Meshtastic devices via MQTT to Reticulum networks, enabling interoperability between Meshtastic mesh networks and Reticulum-based networks.
 
 I am looking to make this into it's own broker instead of connecting to an external MQTT server in the near future.
-Currently I am testing all features. I am looking to expand on much more but I need to focus on making sure everything is functional before proceeding with more features. 
+Currently I am testing all features. I am looking to expand on much more but I need to focus on making sure everything is functional before proceeding with adding more. 
 
 A top priority is to establish that the bridge with reticulum and meshtastic is fully functional. I didn't have a radio so I wasn't able to test that feature.
 
