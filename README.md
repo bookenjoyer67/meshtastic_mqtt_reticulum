@@ -2,6 +2,17 @@
 
 A bridge that connects Meshtastic devices via MQTT to Reticulum networks, enabling interoperability between Meshtastic mesh networks and Reticulum-based networks.
 
+I am looking to make this into it's own broker instead of connecting to an external MQTT server in the near future.
+Currently I am testing all features. I am looking to expand on much more but I need to focus on making sure everything is functional before proceeding with more features. 
+
+A top priority is to establish that the bridge with reticulum and meshtastic is fully functional. I didn't have a radio so I wasn't able to test that feature.
+
+It is able to send and recieve packets. Now I want to make sure it's serving it's intended purpose so I can build all the features around the bridge.
+
+The scenerio I am envisioning for this app is this would be running as a "server" with a usb dongle attached for it to transmit radio. People will reach the server via mqtt from either reticulum or meshtastic via lora (or mqtt). This will serve as a gateway if people want to mesh but don't have the ability to yet from a lack of the specialized hardware. While people are looking to phase out legacy styles of communication this should serve as a transitionary piece of software that has baseline meshtastic and reticulum features (with more to add in the future).
+
+Yes the majority of the code is vibe coded because I have a big picture I want to accomplish as one guy. This has saved me months of development to where I can focus on functionality of key features. This is far from the final project. I am actually at the stage where AI loses its effectiveness.
+
 ## Overview
 
 This project provides a bridge between:
